@@ -47,9 +47,10 @@ class PlaylistController extends Controller
 
     public function showPlaylistSongs(Playlist $playlist)
     {
-        $songs = $playlist->songs; 
-
+        
         $playlists = auth()->user()->playlists;
+        
+        $songs = $playlist->songs()->get(); 
 
         return view("playlists.show", [
             "songs" => $songs, 
@@ -57,8 +58,6 @@ class PlaylistController extends Controller
             "playlists" => $playlists
         ]);
     }
-
-
 
 
     public function addPlaylist(Request $request)
@@ -109,10 +108,10 @@ class PlaylistController extends Controller
      */
 // PlaylistController.php
 
-    public function show(Playlist $playlist)
-    {
-        return view('playlists.show', compact('playlist'));
-    }
+    // public function show(Playlist $playlist)
+    // {
+    //     return view('playlists.show', compact('playlist'));
+    // }
 
 
     /**

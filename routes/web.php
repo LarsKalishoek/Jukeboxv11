@@ -40,6 +40,6 @@ Route::get('/genres', [GenreController::class, 'showGenre'])->name('genres.genre
 Route::get('/addGenre', [GenreController::class, 'showGenreForm']); 
 Route::post('/addGenre', [GenreController::class, 'addGenre'])->name('genres.addGenre');
 Route::get('/playlist/{genre}', [GenreController::class, 'showSongWithGenre']);
-Route::get('/genre/{genre}', [GenreController::class, 'showGenreSongs'])->name('genres.show');
+Route::get('/genre-playlist/{genre}', [GenreController::class, 'showSongWithGenre'])->name('genres.show');
 
 require __DIR__.'/auth.php';

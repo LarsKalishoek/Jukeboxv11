@@ -1,0 +1,27 @@
+services:
+  app:
+    build: .
+    container_name: app
+    ports:
+      - "8000:80"
+    volumes:
+      - .:/var/www/html
+      - /var/www/html/vendor
+    environment:
+      APP_NAME: Laravel
+      APP_ENV: local
+  db:
+    image: mysql:5.7
+    platform: linux/amd64
+    container_name: db
+    environment:
+      MYSQL_DATABASE: root
+      MYSQL_ROOT_PASSWORD: mysql
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./container_db:/var/lib/mysql
+
+networks: 
+  app-network:
+    driver: bridge
